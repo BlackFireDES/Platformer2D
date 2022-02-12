@@ -15,11 +15,11 @@ public class MovementDragon : MonoBehaviour
     private void FixedUpdate()
     {
         RaycastHit2D[] hit = new RaycastHit2D[1];
-        Vector2[] directions = { new Vector2(0, -1), 
-                                 new Vector2(1, 0), 
-                                 new Vector2(-1, 0) };
+        Vector2[] surfaceInteractionDistance = { new Vector2(0, -1), 
+                                                 new Vector2(1, 0), 
+                                                 new Vector2(-1, 0) };
 
-        foreach(var item in directions)
+        foreach(var item in surfaceInteractionDistance)
         {
             Physics2D.Raycast(transform.position, item, _filter2D, hit);
             if(hit[0].collider != null && hit[0].distance < 0.8f)

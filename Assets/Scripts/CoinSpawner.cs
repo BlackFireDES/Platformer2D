@@ -10,22 +10,14 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Coin coin;
-
-        if (collision.gameObject.TryGetComponent<Coin>(out coin))
-        {
+        if (collision.gameObject.TryGetComponent<Coin>(out Coin coin))
             IsCoinExist = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Coin coin;
-
-        if (collision.gameObject.TryGetComponent<Coin>(out coin))
-        {
+        if (collision.gameObject.TryGetComponent<Coin>(out Coin coin))
             IsCoinExist = false;
-        }
     }
 
     public void SpawnCoin()
