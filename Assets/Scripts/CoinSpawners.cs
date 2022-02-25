@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinSpawn : MonoBehaviour
+public class CoinSpawners : MonoBehaviour
 {
     private CoinSpawner[] _coinSpawners;
     private bool _isWorking;
@@ -16,6 +16,7 @@ public class CoinSpawn : MonoBehaviour
 
     private IEnumerator SpawnCoin()
     {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(5);
         while (_isWorking)
         {
             int index = Random.Range(0, _coinSpawners.Length);
@@ -27,7 +28,7 @@ public class CoinSpawn : MonoBehaviour
             }
             _coinSpawners[index].SpawnCoin();
 
-            yield return new WaitForSeconds(5);
+            yield return  waitForSeconds;
         }
     }
 
