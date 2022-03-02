@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class CoinSpawnSystem : MonoBehaviour
 {
-    private CoinSpawner[] _coinSpawners;
+    private CoinSpawner[] _spawners;
     private bool _isWorking;
 
     private void Start()
     {
-        _coinSpawners = gameObject.GetComponentsInChildren<CoinSpawner>();
+        _spawners = gameObject.GetComponentsInChildren<CoinSpawner>();
         _isWorking = true;
-        StartCoroutine(SpawnCoin());        
+        StartCoroutine(Spawn());        
     }
 
-    private IEnumerator SpawnCoin()
+    private IEnumerator Spawn()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(5);
         while (_isWorking)
         {
-            int index = Random.Range(0, _coinSpawners.Length);
+            int index = Random.Range(0, _spawners.Length);
 
-            while (_coinSpawners[index].IsCoinExist == true)
+            while (_spawners[index].IsEmpty == true)
             {
-                index = Random.Range(0, _coinSpawners.Length);
+                index = Random.Range(0, _spawners.Length);
                 yield return new WaitForEndOfFrame();
             }
-            _coinSpawners[index].SpawnCoin();
+            _spawners[index].Spawn();
 
             yield return  waitForSeconds;
         }
