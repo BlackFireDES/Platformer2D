@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinSpawners : MonoBehaviour
+public class CoinSpawnSystem : MonoBehaviour
 {
     private CoinSpawner[] _coinSpawners;
     private bool _isWorking;
